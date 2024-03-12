@@ -130,7 +130,7 @@ class FileBasedCache(BaseCache):
         key = self.make_key(key, version=version)
         self.validate_key(key)
         return os.path.join(self._dir, ''.join(
-            [hashlib.md5(key.encode()).hexdigest(), self.cache_suffix]))
+            [hashlib.md5(key.encode(), usedforsecurity=False).hexdigest(), self.cache_suffix]))
 
     def clear(self):
         """

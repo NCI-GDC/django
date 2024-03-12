@@ -71,7 +71,7 @@ class HashedFilesMixin:
         """
         if content is None:
             return None
-        md5 = hashlib.md5()
+        md5 = hashlib.md5(usedforsecurity=False)
         for chunk in content.chunks():
             md5.update(chunk)
         return md5.hexdigest()[:12]
